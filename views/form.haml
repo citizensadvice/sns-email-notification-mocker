@@ -1,0 +1,100 @@
+!!!
+%html{ lang: "en-GB" }
+  %head
+    %meta{ charset: "utf-8" }
+    %title Casebook email tester
+    :css
+      body {
+        font: 1.2em/1.5 sans-serif;
+        max-width: 800px;
+        margin: 2em auto;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 1em;
+      }
+
+      label > em {
+        display: block;
+        font-size: .9em;
+      }
+
+      input,
+      textarea {
+        font-size: inherit;
+        font-family: inherit;
+        line-height: inherit;
+        padding: .2em;
+      }
+
+      input:not([type=submit]):not([type=checkbox]),
+      textarea {
+        width: 100%;
+      }
+
+      input[type=submit] {
+        cursor: pointer;
+      }
+
+      .success {
+        border-left: 2px solid green;
+        background-color: #d0ffd0;
+        padding: .5em;
+      }
+
+      .error {
+        border-left: 2px solid red;
+        background-color: #ffd9d9;
+        padding: .5em;
+      }
+  %body
+    %h1 Casebook email tester
+
+    - if @result&.success?
+      %p.success
+        ✓&nbsp;
+        Message sent and returned success.
+        Return status #{@result.status}
+    - elsif @result
+      %p.error
+        ✖&nbsp;
+        Message sent and returned error.
+        Return status #{@result.status}
+
+    %form{ method: "post", action: "/" }
+      %label{ for: "input_from" }
+        From:
+        %input{ type: "text", id: "input_from", name: "from", value: @mail&.from&.join(", ") }
+
+      %label{ for: "input_reply_to" }
+        Reply to:
+        %em If not supplied then from is used
+        %input{ type: "text", id: "input_reply_to", name: "reply_to", value: @mail&.reply_to&.join(", ") }
+
+      %label{ for: "input_to" }
+        To:
+        %em Separate multiple addresses with commas
+        %input{ type: "text", id: "input_to", name: "to", value: @mail&.to&.join(", ") }
+
+      %label{ for: "input_cc" }
+        Cc:
+        %em Separate multiple addresses with commas
+        %input{ type: "text", id: "input_cc", name: "cc", value: @mail&.cc&.join(", ") }
+
+      %label{ for: "input_subject" }
+        Subject:
+        %input{ type: "text", id: "input_subject", name: "subject", value: @mail&.subject }
+
+      %label{ for: "input_body" }
+        Text body:
+        %textarea{ type: "text", id: "input_body", name: "body", rows: 5 }
+          = @mail&.text_part&.body || @mail&.body
+
+      %label{ for: "input_html" }
+        HTML body:
+        %em Leave blank for a text only email
+        %textarea{ type: "text", id: "input_html", name: "html", rows: 5 }
+          = @mail&.html_part&.body
+
+      %input{ type: "submit", value: "Send" }
