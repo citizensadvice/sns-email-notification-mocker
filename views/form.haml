@@ -82,6 +82,10 @@
         %em Separate multiple addresses with commas
         %input{ type: "text", id: "input_cc", name: "cc", value: @mail&.cc&.join(", ") }
 
+      %label{ for: "message_id" }
+        Message id:
+        %input{ type: "text", id: "message_id", name: "message_id", value: @mail&.message_id }
+
       %label{ for: "input_subject" }
         Subject:
         %input{ type: "text", id: "input_subject", name: "subject", value: @mail&.subject }

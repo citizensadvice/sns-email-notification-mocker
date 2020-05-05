@@ -32,7 +32,7 @@ the appropriate settings for the application.
 ## Build
 
 ```
-docker build -t citizensadvice/sns-email-notification-mocker .
+docker build -t local/sns-email-notification-mocker .
 ```
 
 ## Local testing
