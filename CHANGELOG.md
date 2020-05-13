@@ -1,5 +1,9 @@
 # Change log
 
+## 1.2.0
+
+- Message id will now auto-generate unless tickbox is checked
+
 ## 1.1.1
 
 - Fix mail information should be in a "mail" property

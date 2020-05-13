@@ -82,9 +82,13 @@
         %em Separate multiple addresses with commas
         %input{ type: "text", id: "input_cc", name: "cc", value: @mail&.cc&.join(", ") }
 
-      %label{ for: "message_id" }
+      %label{ for: "set_message_id" }
+        %input{ type: "checkbox", id: "set_message_id", onclick: "document.getElementById('message_id').disabled = !this.checked" }
+        Set message id
+
+      %label{ for: "message_id", hidden: true }
         Message id:
-        %input{ type: "text", id: "message_id", name: "message_id", value: @mail&.message_id }
+        %input{ type: "text", id: "message_id", disabled: true, name: "message_id", value: @mail&.message_id }
 
       %label{ for: "input_subject" }
         Subject:
