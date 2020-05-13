@@ -49,11 +49,13 @@ end
 def message(mail)
   {
     "Message" => JSON.generate(
-      "source" => mail.from,
-      "destination" => Array(mail.to) + Array(mail.cc),
-      "timestamp" => Time.now.iso8601,
-      "messageId" => SecureRandom.uuid,
-      "content" => mail.to_s
+      "content" => mail.to_s,
+      "mail" => {
+        "source" => mail.from,
+        "destination" => Array(mail.to) + Array(mail.cc),
+        "timestamp" => Time.now.iso8601,
+        "messageId" => SecureRandom.uuid
+      }
     ),
     "MessageId" => SecureRandom.uuid,
     "Timestamp" => Time.now.iso8601,
