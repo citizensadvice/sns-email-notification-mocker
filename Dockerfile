@@ -4,9 +4,11 @@ ENV APP_ROOT /app
 
 WORKDIR $APP_ROOT
 
-RUN apk add --update --no-cache build-base git
 ADD Gemfile* ./
-RUN gem install bundler && bundle install -j3 && bundle clean --force
+
+RUN apk add --update --no-cache build-base git && \
+    gem install bundler && bundle install -j3 --without development && bundle clean --force && \
+    apk del --purge build-base git
 
 COPY . ./
 

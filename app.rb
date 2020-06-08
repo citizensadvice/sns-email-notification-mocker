@@ -46,7 +46,7 @@ post "/debug" do
   puts JSON.pretty_generate(JSON.parse(request.body.read))
 end
 
-def message(mail)
+def message(mail) # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
   {
     "Message" => JSON.generate(
       "content" => mail.to_s,
@@ -55,6 +55,10 @@ def message(mail)
         "destination" => Array(mail.to) + Array(mail.cc),
         "timestamp" => Time.now.iso8601,
         "messageId" => SecureRandom.uuid
+      },
+      "receipt" => {
+        "timestamp" => Time.now.iso8601,
+        "recipients" => Array(mail.to) + Array(mail.cc)
       }
     ),
     "MessageId" => SecureRandom.uuid,

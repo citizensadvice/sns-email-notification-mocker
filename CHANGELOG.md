@@ -1,5 +1,10 @@
 # Change log
 
+## 1.3.0
+
+- Add in "receipt.recipients" to Message
+- Fix docker image size
+
 ## 1.2.0
 
 - Message id will now auto-generate unless tickbox is checked
