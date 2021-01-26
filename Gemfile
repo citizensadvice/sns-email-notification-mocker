@@ -13,5 +13,5 @@ gem "mail"
 
 group :development do
   gem "byebug"
-  gem "citizens-advice-style", github: "citizensadvice/citizens-advice-style-ruby", tag: "v0.2.3"
+  gem "citizens-advice-style", github: "citizensadvice/citizens-advice-style-ruby", tag: "v1.1.0"
 end
