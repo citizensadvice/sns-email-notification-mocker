@@ -1,15 +1,34 @@
-FROM ruby:2.6.5-alpine3.10
+FROM ruby:2.7.2-alpine3.11 AS builder
 
-ENV APP_ROOT /app
+ENV APP_HOME /app
+ENV LANG C.UTF-8
 
-WORKDIR $APP_ROOT
+RUN apk add --update --no-cache build-base
 
-ADD Gemfile* ./
+WORKDIR $APP_HOME
+COPY Gemfile* /app/
 
-RUN apk add --update --no-cache build-base git && \
-    gem install bundler && bundle install -j3 --without development && bundle clean --force && \
-    apk del --purge build-base git
+RUN bundle config set without development && \
+    bundle install && \
+    rm -rf /usr/local/bundle/*/*/cache && \
+    find /usr/local/bundle -name "*.c" -delete && \
+    find /usr/local/bundle -name "*.o" -delete
 
-COPY . ./
+COPY . $APP_HOME
+
+#################################################
+
+FROM ruby:2.7.2-alpine3.11
+
+ENV APP_HOME /app
+
+COPY --from=builder /usr/local/bundle/ /usr/local/bundle/
+
+RUN adduser -D ruby
+USER ruby
+
+COPY --chown=ruby . $APP_HOME
+
+WORKDIR $APP_HOME
 
 CMD ["ruby", "app.rb", "-o", "0.0.0.0", "-p", "4000"]
