@@ -1,5 +1,9 @@
 # Change log
 
+## 1.3.1
+
+- Use multi-stage build to decrease the image size
+
 ## 1.3.0
 
 - Add in "receipt.recipients" to Message

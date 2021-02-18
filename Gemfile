@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-ruby "2.6.5"
+ruby "2.7.2"
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -13,5 +13,5 @@ gem "mail"
 
 group :development do
   gem "byebug"
-  gem "citizens-advice-style", github: "citizensadvice/citizens-advice-style-ruby", tag: "v0.2.3"
+  gem "citizens-advice-style", github: "citizensadvice/citizens-advice-style-ruby", tag: "v0.4.0"
 end
