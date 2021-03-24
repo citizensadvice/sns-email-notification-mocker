@@ -16,7 +16,7 @@ GEM
       multipart-post (>= 1.2, < 3)
       ruby2_keywords
     faraday-net_http (1.0.1)
-    hamlit (2.14.4)
+    hamlit (2.14.6)
       temple (>= 0.8.2)
       thor
       tilt
