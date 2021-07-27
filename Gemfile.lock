@@ -1,10 +1,10 @@
 GIT
   remote: https://github.com/citizensadvice/citizens-advice-style-ruby.git
-  revision: d73af3ef9bf0b03f7d834a009308ce7296b68e81
-  tag: v0.4.0
+  revision: bff99e2ce1bd8fdad45dd87e8827bdba2fbc9727
+  tag: v3.0.0
   specs:
-    citizens-advice-style (0.4.0)
-      rubocop (~> 0.91.0)
+    citizens-advice-style (3.0.0)
+      rubocop (~> 1.18.0)
 
 GEM
   remote: https://rubygems.org/
@@ -28,25 +28,25 @@ GEM
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
     parallel (1.20.1)
-    parser (3.0.0.0)
+    parser (3.0.2.0)
       ast (~> 2.4.1)
     rack (2.2.3)
     rack-protection (2.1.0)
       rack
     rainbow (3.0.0)
-    regexp_parser (2.0.3)
-    rexml (3.2.4)
-    rubocop (0.91.1)
+    regexp_parser (2.1.1)
+    rexml (3.2.5)
+    rubocop (1.18.4)
       parallel (~> 1.10)
-      parser (>= 2.7.1.1)
+      parser (>= 3.0.0.0)
       rainbow (>= 2.2.2, < 4.0)
-      regexp_parser (>= 1.7)
+      regexp_parser (>= 1.8, < 3.0)
       rexml
-      rubocop-ast (>= 0.4.0, < 1.0)
+      rubocop-ast (>= 1.8.0, < 2.0)
       ruby-progressbar (~> 1.7)
-      unicode-display_width (>= 1.4.0, < 2.0)
-    rubocop-ast (0.8.0)
-      parser (>= 2.7.1.5)
+      unicode-display_width (>= 1.4.0, < 3.0)
+    rubocop-ast (1.8.0)
+      parser (>= 3.0.1.1)
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.4)
     sinatra (2.1.0)
@@ -63,7 +63,7 @@ GEM
     temple (0.8.2)
     thor (1.1.0)
     tilt (2.0.10)
-    unicode-display_width (1.7.0)
+    unicode-display_width (2.0.0)
 
 PLATFORMS
   ruby
