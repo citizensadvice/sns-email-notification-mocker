@@ -3,7 +3,7 @@ version: "3"
 services:
   app:
     build: .
-    image: "public.ecr.aws/citizensadvice/sns-email-notification-mocker"
+    image: "citizensadvice/sns-email-notification-mocker"
     ports:
       - 4002:4000
     volumes:

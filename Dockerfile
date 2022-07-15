@@ -1,4 +1,4 @@
-FROM ruby:2.7.2-alpine3.11 AS builder
+FROM ruby:3.1.2-alpine3.16 AS builder
 
 ENV APP_HOME /app
 ENV LANG C.UTF-8
@@ -18,7 +18,7 @@ COPY . $APP_HOME
 
 #################################################
 
-FROM ruby:2.7.2-alpine3.11
+FROM ruby:3.1.2-alpine3.16
 
 ENV APP_HOME /app
 
@@ -31,4 +31,4 @@ COPY --chown=ruby . $APP_HOME
 
 WORKDIR $APP_HOME
 
-CMD ["ruby", "app.rb", "-o", "0.0.0.0", "-p", "4000"]
+CMD ["bundle", "exec", "rackup", "-p", "4000"]
