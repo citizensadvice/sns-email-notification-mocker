@@ -24,15 +24,15 @@ post "/" do
   @mail.cc = params["cc"]
   @mail.subject = params["subject"]
   @mail.message_id = params["message_id"] || "#{SecureRandom.uuid}@localhost"
-  if params["html"].to_s.strip != ""
+  if params["html"].to_s.strip == ""
+    @mail.body = params["body"]
+  else
     @mail.html_part = params["html"]
     @mail.text_part = params["body"] if params["body"].to_s.strip != ""
-  else
-    @mail.body = params["body"]
   end
 
   @result = Faraday.post(
-    ENV["ENDPOINT"],
+    ENV.fetch("ENDPOINT", nil),
     JSON.generate(
       message(@mail)
     ),

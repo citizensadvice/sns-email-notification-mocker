@@ -1,5 +1,9 @@
 # Change log
 
+## 1.3.2
+
+- arm64 image support
+
 ## 1.3.1
 
 - Use multi-stage build to decrease the image size
